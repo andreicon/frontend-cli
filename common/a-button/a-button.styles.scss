@@ -1,0 +1,156 @@
+@mixin mywolf-a-button($name: ".a-button") {
+	#{$name} {
+		line-height: $global-line-height;
+
+		font-size: $global-xsmall-font-size;
+		font-weight: 500;
+		border: 1px solid get-color(primary);
+
+		&:active,
+		&:focus {
+			outline: none !important;
+		}
+
+		&--primary {
+			background-color: get-color(primary);
+			color: white;
+			&:hover {
+				background-color: darken(get-color(primary), 20%);
+				color: white;
+			}
+		}
+
+		&--default {
+			background-color: white;
+			color: get-color(primary);
+		}
+
+		&--secondary {
+			background-color: transparent;
+			color: get-color(primary);
+		}
+
+		&--ghost {
+			background-color: transparent;
+			border-color: transparent;
+			color: get-color(true-white);
+
+			&:hover {
+				background-color: transparent;
+				color: get-color(true-white);
+				font-weight: bold;
+			}
+		}
+
+		&--rounded:not(.a-button--large) {
+			border-radius: 10px;
+		}
+
+		&--rounded.a-button--large{
+			border-radius: 19px;
+
+			@media (max-width: $breakpoint-medium){
+				border-radius: 10px;
+			}
+		}
+
+		&--small {
+			padding: 4px 12px;
+			font-size: 12px;
+			height: 36px;
+		}
+		&--medium {
+			padding: 12px 21px;
+			font-size: 16px;
+			height: 48px;
+		}
+		&--large {
+			padding: 40px 64px;
+			font-size: 16px;
+			height: 112px;
+
+			&.has-icon {
+				// padding: 1px 30px 0px 0px;
+				padding-left: 32px;
+			}
+		}
+
+
+		&__text {
+			margin: 0 $global-xsmall-margin;
+		}
+
+		@include element-modifier('&--small') {
+            &__icon-wrapper {
+				padding: 0px;
+				padding-left: 0;
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		@include element-modifier('&--medium') {
+            &__icon-wrapper {
+				padding: 8px;
+				padding-left: 0;
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		@include element-modifier('&--large') {
+            &__icon-wrapper {
+				padding: 16px;
+				padding-left: 0;
+				width: 66px;
+				height: 66px;
+			}
+		}
+
+		@include element-modifier-self('&--responsive') {
+            @media (max-width: $breakpoint-xsmall-max) {
+				width: 100%;
+				span {
+					display: block;
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+
+
+		// icon button with size modifiers
+		@include element-modifier-self('&--icononly') {
+			&--small {
+				width: 36px;
+				padding: 0;
+				> span {
+					padding: 0;
+					margin: auto;
+				}
+			}
+			&--medium {
+				width: 48px;
+				padding: 0;
+				> span {
+					padding: 0;
+					margin: auto;
+				}
+			}
+			&--large {
+				width: 112px;
+				padding: 0;
+				> span {
+					padding: 0;
+					margin: auto;
+				}
+			}
+		}
+
+		&.uk-button.uk-disabled {
+			opacity: 0.4;
+		}
+	}
+}
+
+@include mywolf-a-button();

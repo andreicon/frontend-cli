@@ -1,0 +1,73 @@
+@mixin mywolf-a-button-system($name: '.a-button-system') {
+    #{$name} {
+        .default-button {
+            width: 160px;
+            height: 48px;
+            border: none;
+            background-color: get-color(dark-blue);
+            color: #ffffff;
+            font-family: Inter;
+            font-style: 'medium';
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin: 8px;
+            overflow: hidden;
+            position: relative;
+            background-position: center;
+            padding:8px 32px 8px 32px;
+
+            &:hover {
+                background-color: get-color(text-grey);
+                color: #ffffff;
+            }
+
+            &:active {
+                background-color: get-color(text-grey);
+                color: #ffffff;
+                animation: ripple;
+                background-size: 100%;
+            }
+
+            &.flex-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .button-focused {
+            background-color: get-color(primary);
+            color: #ffffff;
+        }
+      
+        .ripple{
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 600ms linear;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes ripple {
+            to {
+              transform: scale(4);
+              opacity: 0;
+            }
+          }
+
+        
+        .default-disabled {
+            pointer-events: none;
+            background-color: #f8f8fa;
+            color: #c7cacf;
+        }
+
+        .div-disabled {
+            pointer-events: none;
+        }
+    }
+}
+
+@include mywolf-a-button-system();
